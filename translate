@@ -1,0 +1,30 @@
+from deep_translator import GoogleTranslator
+import os
+from gtts import gTTS
+
+
+source_language = 'en'
+target_language = 'my'
+text = input("Input text to translate>> ")
+
+translated = GoogleTranslator(source=source_language, target=target_language).translate(text)
+print("Translated Text>> " + translated)
+
+with open('translatedgoogle.txt', 'w', encoding='utf-8') as file:
+    file.write(translated)
+
+# open the text file in default program
+os.startfile('translatedgoogle.txt')
+
+
+# Create a gTTS object and save the audio file
+tts = gTTS(translated, lang=target_language)
+tts.save('translatedgoogle.mp3')
+
+# Open the audio file
+os.startfile('translatedgoogle.mp3')
+
+
+
+
+
